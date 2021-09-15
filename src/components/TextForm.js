@@ -18,6 +18,17 @@ export default function TextForm(props) {
     setText(clearText);
   };
 
+  const clickCopyHandler = () => {
+    let text = document.getElementById("exampleFormControlTextarea1");
+    text.select();
+    navigator.clipboard.writeText(text.value);
+  };
+
+  const removeSpacesHandler = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
+
   const changeHandler = (event) => {
     setText(event.target.value);
   };
@@ -44,6 +55,12 @@ export default function TextForm(props) {
         </button>
         <button className="btn btn-primary mx-2" onClick={clickClearHandler}>
           Clear
+        </button>
+        <button className="btn btn-primary mx-2" onClick={clickCopyHandler}>
+          Copy text
+        </button>
+        <button className="btn btn-primary mx-2" onClick={removeSpacesHandler}>
+          Remove extra spaces
         </button>
       </div>
       <div className="container my-3">
