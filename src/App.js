@@ -24,11 +24,21 @@ function App() {
       document.body.style.backgroundColor = "#042743";
       document.body.style.color = "white";
       showAlert("Dark mode active", "success");
+      document.title = "TextUtils - Dark mode";
+
+      // setInterval(() => {
+      //   document.title = "TextUtils - Awesome mode";
+      // }, 2000);
+
+      // setInterval(() => {
+      //   document.title = "Download it";
+      // }, 1500);
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       showAlert("Light mode active", "success");
+      document.title = "TextUtils - Light mode";
     }
   };
   return (

@@ -38,6 +38,19 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
+  const wordCount = (text) => {
+    let trimmedWord = text.trim();
+    if (trimmedWord.length === 0) {
+      return 0;
+    }
+
+    let wordNo = trimmedWord.split(" ");
+    let nonEmptyWord = wordNo.filter((word, index) => {
+      return word[index] !== " ";
+    });
+    return nonEmptyWord.length;
+  };
+
   return (
     <>
       <div className="container">
@@ -75,8 +88,7 @@ export default function TextForm(props) {
       <div className="container my-3">
         <h2>Text Summary</h2>
         <p>
-          Your text has {text.split(" ").length} words and {text.length}{" "}
-          characters
+          Your text has {wordCount(text)} words and {text.length} characters
         </p>
         <p>Reading time is {0.008 * text.split(" ").length} minutes</p>
         <h2>Preview of text</h2>
