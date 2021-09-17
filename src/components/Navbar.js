@@ -46,13 +46,57 @@ export default function Navbar(props) {
               Search
             </button>
             </form> */}
+          <div className="d-flex">
+            <button
+              className="btn btn-primary rounded-circle mx-2"
+              style={{ height: "20px", width: "20px" }}
+              onClick={() => {
+                props.toggleMode("primary");
+              }}
+            ></button>
+            <button
+              className="btn btn-danger rounded-circle mx-2"
+              style={{ height: "20px", width: "20px" }}
+              onClick={() => {
+                props.toggleMode("danger");
+              }}
+            ></button>
+            <button
+              className="btn btn-warning rounded-circle mx-2"
+              style={{ height: "20px", width: "20px" }}
+              onClick={() => {
+                props.toggleMode("warning");
+              }}
+            ></button>
+            <button
+              className="btn btn-success rounded-circle mx-2"
+              style={{ height: "20px", width: "20px" }}
+              onClick={() => {
+                props.toggleMode("success");
+              }}
+            ></button>
+            <button
+              className="btn btn-dark rounded-circle mx-2"
+              style={{ height: "20px", width: "20px" }}
+              onClick={() => {
+                props.toggleMode("dark");
+              }}
+            ></button>
+            <button
+              className="btn btn-light rounded-circle mx-2"
+              style={{ height: "20px", width: "20px" }}
+              onClick={() => {
+                props.toggleMode("light");
+              }}
+            ></button>
+          </div>
           <div className="form-check form-switch">
-            <input
+            {/* <input
               className="form-check-input"
               type="checkbox"
               id="flexSwitchCheckDefault"
               onClick={props.toggleMode}
-            />
+            /> */}
             <label
               className="form-check-label"
               htmlFor="flexSwitchCheckDefault"
