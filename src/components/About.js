@@ -1,32 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function About(props) {
-  const [myStyle, setMyStyle] = useState({
-    backgroundColor: "white",
-    color: "black",
-  });
-
-  const [btnText, setBtnText] = useState("Enable dark mode");
-
-  const toggleStyle = () => {
-    if (myStyle.backgroundColor === "white") {
-      setMyStyle({
-        backgroundColor: "black",
-        color: "white",
-        border: "1px solid white",
-      });
-      setBtnText("Enable light mode");
-    } else {
-      setMyStyle({
-        backgroundColor: "white",
-        color: "black",
-      });
-      setBtnText("Enable dark mode");
-    }
+  let myStyle = {
+    color: props.mode === "light" ? "black" : "white",
+    backgroundColor: props.mode === "light" ? "white" : "#042743",
+    border: props.mode === "dark" ? "1px solid white" : "",
   };
 
+  // const [myStyle, setMyStyle] = useState({
+  //   backgroundColor: "white",
+  //   color: "black",
+  // });
+
+  // const [btnText, setBtnText] = useState("Enable dark mode");
+
+  // const toggleStyle = () => {
+  //   if (myStyle.backgroundColor === "white") {
+  //     setMyStyle({
+  //       backgroundColor: "black",
+  //       color: "white",
+  //       border: "1px solid white",
+  //     });
+  //     setBtnText("Enable light mode");
+  //   } else {
+  //     setMyStyle({
+  //       backgroundColor: "white",
+  //       color: "black",
+  //     });
+  //     setBtnText("Enable dark mode");
+  //   }
+  // };
+
   return (
-    <div className="container my-5 py-3" style={myStyle}>
+    <div
+      className="container my-5 py-3"
+      style={{ color: props.mode === "light" ? "black" : "white" }}
+    >
       <h1 className="mb-3 text-center">About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={myStyle}>
@@ -126,11 +135,11 @@ export default function About(props) {
           </div>
         </div>
       </div>
-      <div className="container my-3">
+      {/* <div className="container my-3">
         <button className="btn btn-outline-primary" onClick={toggleStyle}>
           {btnText}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

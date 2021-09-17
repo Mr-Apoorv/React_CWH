@@ -25,6 +25,7 @@ export default function TextForm(props) {
     let text = document.getElementById("exampleFormControlTextarea1");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert("Text copied to clipboard", "success");
   };
 
@@ -46,7 +47,7 @@ export default function TextForm(props) {
 
     let wordNo = trimmedWord.split(" ");
     let nonEmptyWord = wordNo.filter((word, index) => {
-      return word[index] !== " ";
+      return word.length !== 0;
     });
     return nonEmptyWord.length;
   };
@@ -64,24 +65,44 @@ export default function TextForm(props) {
             value={text}
             onChange={changeHandler}
             style={{
-              backgroundColor: props.mode === "light" ? "white" : "gray",
+              backgroundColor: props.mode === "light" ? "white" : "#212f69",
               color: props.mode === "light" ? "black" : "white",
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={clickUpHandler}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2"
+          onClick={clickUpHandler}
+        >
           Change to uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={clickLowHandler}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={clickLowHandler}
+        >
           Change to lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={clickClearHandler}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={clickClearHandler}
+        >
           Clear
         </button>
-        <button className="btn btn-primary mx-2" onClick={clickCopyHandler}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={clickCopyHandler}
+        >
           Copy text
         </button>
-        <button className="btn btn-primary mx-2" onClick={removeSpacesHandler}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={removeSpacesHandler}
+        >
           Remove extra spaces
         </button>
       </div>
@@ -90,7 +111,14 @@ export default function TextForm(props) {
         <p>
           Your text has {wordCount(text)} words and {text.length} characters
         </p>
-        <p>Reading time is {0.008 * text.split(" ").length} minutes</p>
+        <p>
+          Reading time is{" "}
+          {0.008 *
+            text.split(" ").filter((word) => {
+              return word.length !== 0;
+            }).length}{" "}
+          minutes
+        </p>
         <h2>Preview of text</h2>
         <pre>
           {text.length > 0
