@@ -45,7 +45,7 @@ export default function TextForm(props) {
       return 0;
     }
 
-    let wordNo = trimmedWord.split(" ");
+    let wordNo = trimmedWord.split(/\s+/);
     let nonEmptyWord = wordNo.filter((word, index) => {
       return word.length !== 0;
     });
@@ -114,7 +114,7 @@ export default function TextForm(props) {
         <p>
           Reading time is{" "}
           {0.008 *
-            text.split(" ").filter((word) => {
+            text.split(/\s+/).filter((word) => {
               return word.length !== 0;
             }).length}{" "}
           minutes
